@@ -1,0 +1,268 @@
+:root {
+  --primary: #02426e;
+  --primary-tint: #eef5fb;
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #d9e1e8;
+  --danger: #b42318;
+  --danger-soft: #fef3f2;
+  --radius: 14px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: #e5eaef;
+  color: var(--text);
+}
+
+a {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid #7cb8e6;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Estrutura em coluna, como um app de celular */
+.app {
+  max-width: 480px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 520px) {
+  .app {
+    box-shadow: 0 0 0 1px var(--border), 0 10px 40px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Barra superior */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  height: 60px;
+  padding: 0 8px;
+  background: var(--primary);
+  color: #fff;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: inherit;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Conteúdo */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 16px 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--primary);
+}
+
+.brand-logo img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.brand strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.brand small {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.hint {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 0.875rem;
+}
+
+/* Área de envio */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 16px;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.dropzone:hover,
+.dropzone:focus-within,
+.dropzone.dragging {
+  border-color: var(--primary);
+  background: var(--primary-tint);
+}
+
+.dropzone svg {
+  margin-bottom: 4px;
+  color: var(--primary);
+}
+
+.dropzone-title {
+  font-weight: 600;
+}
+
+.dropzone-sub {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* Pré-visualização */
+.preview-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.file-name {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+
+.preview {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #eef2f5;
+}
+
+.preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.preview iframe {
+  display: block;
+  width: 100%;
+  height: 60vh;
+  border: 0;
+}
+
+/* Navegação inferior */
+.bottom-nav {
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px 12px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: var(--text);
+}
+
+.nav-item.active {
+  color: var(--primary);
+  font-weight: 600;
+  cursor: default;
+}
